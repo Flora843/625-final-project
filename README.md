@@ -1,7 +1,7 @@
 # 625-final-project
 ## Biostatistics 625 (University of Michigan - Fall 2022)
 
-## Group Members (Group 9)
+## Group Members (Group 10)
 * Zhilin Zhang
 * Ye Yao
 * Hengde Ouyang
