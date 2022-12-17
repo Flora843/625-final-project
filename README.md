@@ -7,4 +7,4 @@
 * Hengde Ouyang
 
 ## Project Description
-In this project, our group decided to using random survival forest model and cox proportional hazard analysis to predict the survival of breast cancer. 
+In this project, our group decided to using random survival forest model and cox proportional hazard analysis to predict the survival of breast cancer. The data was from SEER database and it contains 300998 cases and 9 variables. 
