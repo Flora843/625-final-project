@@ -137,7 +137,7 @@ s2 <- ggsurvplot(f2,data=trainc, pval = T,#conf.int = TRUE,
                  #legend = c(0.28, 0.45),
                  font.legend = 12,
                  ylab="Probability of survival",xlab = "Months since diagnosis", 
-                 break.x.by = 10)
+                 break.x.by = 15)
 s2
 f3 <- survfit(Surv(months,status5==2)~trainc$HER, data=trainc)
 s3 <- ggsurvplot(f3,data=trainc, pval = T,#conf.int = TRUE,
@@ -154,7 +154,7 @@ s3 <- ggsurvplot(f3,data=trainc, pval = T,#conf.int = TRUE,
                  #legend = c(0.28, 0.45),
                  font.legend = 12,
                  ylab="Probability of survival",xlab = "Months since diagnosis", 
-                 break.x.by = 10)
+                 break.x.by = 15)
 s3
 ```
 
