@@ -285,18 +285,18 @@ fit_cox1 <- coxph(Surv(months,status5==2)~sex+age+ER_PR+race_6+real_tumor+surger
 #fit_cox1 <- coxph(Surv(months,status5==2)~sex+age+ER_PR+race_6+factor(real_tumor)+surgery+HER+stage+reginal_f:factor(real_tumor),data=trainc)
 summary(fit_cox1)
 
-result <- read.csv("forest.csv",header=TRUE,sep=',')#读入数据集
+result <- read.csv("forest.csv",header=TRUE,sep=',')
 #knitr::kable(head(data),booktabs = TRUE,align='c')
 head(result)
 ```
 
 ```{r}
 library(forestplot)
-fig1<- forestplot(result[,c(1,2,3)], #告诉函数，合成的表格result的第1，5，6列还是显示数字
-                  mean=result[,4],   #告诉函数，表格第2列为HR，它要变成森林图的小方块
-                  lower=result[,5],  #告诉函数表格第3列为5%CI，
-                  upper=result[,6],  #表格第5列为95%CI，它俩要化作线段，穿过方块
-                  zero=1,            #告诉函数，零线或参考线为HR=1即x轴的垂直线
+fig1<- forestplot(result[,c(1,2,3)], 
+                  mean=result[,4],   
+                  lower=result[,5],  
+                  upper=result[,6],  
+                  zero=1,            
                   boxsize=0.6,      
                   graph.pos= 2,
                   hrzl_lines=list("1" = gpar(lty=1,lwd=2),
@@ -321,7 +321,7 @@ fig1<- forestplot(result[,c(1,2,3)], #告诉函数，合成的表格result的第
                   fn.ci_norm="fpDrawDiamondCI",
                   col=fpColors(box ='#021eaa', 
                                lines ='#021eaa', 
-                               zero = "black"))       #森林图应插在图形第2列
+                               zero = "black"))       
 fig1
 ```
 ```{r}
@@ -366,7 +366,7 @@ options(datadist='ddist')
 f <- cph(Surv(months,status5==2)~Age+Sex+HER+Race+Stage+ER_PR+Surgery+Tumor_Size+Reginal,x=T, y=T,surv=T,data=train_cox, time.inc=60)
 surv <- Survival(f)
 nom2 <- nomogram(f,fun=function(x) surv(60, x),lp=F, funlabel="5 year survival",maxscale=100,fun.at=c(0.99, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3,0.2,0.1,0.05))   #构建Nomogram  
-plot(nom2)   #输出Nomogram图
+plot(nom2)   
 
 
 ```
@@ -395,112 +395,112 @@ s.1 <- ggsurvplot(fit.1,data=trainc,conf.int = TRUE,conf.int.alpha=0.5,
                   #title="30days survival",
                   ylab="Probability of survival",xlab = "Days since diagnosis")
 ```
-#更改横纵坐标
+
 #xlim = c(0,990),
 s.1
 ```{r}
 f1 <- survfit(Surv(months,status5==2)~trainc$stage, data=trainc)
 s1 <- ggsurvplot(f1,data=trainc, pval = F,#conf.int = TRUE,
                  conf.int.alpha=0.3,#conf.int.style="step",
-                 pval.coord = c(5, 0.05), #调节Pval的位置
+                 pval.coord = c(5, 0.05), 
                  pval.method = T,
                  pval.method.coord = c(0, 0.05),
-                 surv.median.line = "hv", #添加中位生存曲线
+                 surv.median.line = "hv", 
                  #risk.table = 'nrisk_cumcensor',#tables.height = 0.2,
                  #surv.scale = 'percent',
                  break.y.by=0.2,
                  risk.table.y.text = FALSE,
                  #palette=c("#e63946", "#457b9d","#81b29a"), 
-                 #legend.labs=c("Normal (3.11-5.18mmol/L)","Low (≤3.11mmol/L)","High (≥5.18mmol/L)"), #标签
+                 #legend.labs=c("Normal (3.11-5.18mmol/L)","Low (≤3.11mmol/L)","High (≥5.18mmol/L)"),
                  legend.title="Stage",
                  #legend = c(0.28, 0.45),
                  #font.legend = 12,
                  #title="Survival Group By Stage",
-                 ylab="Probability of survival",xlab = "Months since diagnosis", #更改横纵坐标
+                 ylab="Probability of survival",xlab = "Months since diagnosis",
                  break.x.by = 10)
 s1
 
 f2 <- survfit(Surv(months,status5==2)~trainc$ER_PR, data=trainc)
 s2 <- ggsurvplot(f2,data=trainc, pval = T,#conf.int = TRUE,
                  conf.int.alpha=0.3,#conf.int.style="step",
-                 #pval.coord = c(5, 0.05), #调节Pval的位置
+                 #pval.coord = c(5, 0.05), 
                  pval.method = T,
                  #pval.method.coord = c(0, 0.05),
-                 #surv.median.line = "hv", #添加中位生存曲线
+                 #surv.median.line = "hv", 
                  #risk.table = 'nrisk_cumcensor',#tables.height = 0.2,
                  #surv.scale = 'percent',
                  break.y.by=0.2,
                  #risk.table.y.text = FALSE,
                  #palette=c("#e63946", "#457b9d","#81b29a"), 
-                 #legend.labs=c("Normal (3.11-5.18mmol/L)","Low (≤3.11mmol/L)","High (≥5.18mmol/L)"), #标签
+                 #legend.labs=c("Normal (3.11-5.18mmol/L)","Low (≤3.11mmol/L)","High (≥5.18mmol/L)"), 
                  legend.title="ER_PR",
                  #legend = c(0.28, 0.45),
                  font.legend = 12,
                  #title="Survival Group By Cholesterol",
-                 ylab="Probability of survival",xlab = "Months since diagnosis", #更改横纵坐标
+                 ylab="Probability of survival",xlab = "Months since diagnosis", 
                  break.x.by = 10)
 s2
 
 f3 <- survfit(Surv(months,status5==2)~trainc$HER, data=trainc)
 s3 <- ggsurvplot(f3,data=trainc, pval = T,#conf.int = TRUE,
                  conf.int.alpha=0.3,#conf.int.style="step",
-                 #pval.coord = c(5, 0.05), #调节Pval的位置
+                 #pval.coord = c(5, 0.05), 
                  pval.method = T,
                  #pval.method.coord = c(0, 0.05),
-                 #surv.median.line = "hv", #添加中位生存曲线
+                 #surv.median.line = "hv", 
                  #risk.table = 'nrisk_cumcensor',#tables.height = 0.2,
                  #surv.scale = 'percent',
                  break.y.by=0.05,
                  #risk.table.y.text = FALSE,
                  #palette=c("#e63946", "#457b9d","#81b29a"), 
-                 #legend.labs=c("Normal (3.11-5.18mmol/L)","Low (≤3.11mmol/L)","High (≥5.18mmol/L)"), #标签
+                 #legend.labs=c("Normal (3.11-5.18mmol/L)","Low (≤3.11mmol/L)","High (≥5.18mmol/L)"), 
                  legend.title="HER",
                  #legend = c(0.28, 0.45),
                  font.legend = 12,
                  #ylim=c(0.6,1),
                  #title="Survival Group By Cholesterol",
-                 ylab="Probability of survival",xlab = "Months since diagnosis", #更改横纵坐标
+                 ylab="Probability of survival",xlab = "Months since diagnosis",
                  break.x.by = 10)
 s3
 
 f4 <- survfit(y~complete_data$PR, data=complete_data)
 s4 <- ggsurvplot(f4,data=complete_data, pval = F,#conf.int = TRUE,
                  conf.int.alpha=0.3,#conf.int.style="step",
-                 pval.coord = c(5, 0.05), #调节Pval的位置
+                 pval.coord = c(5, 0.05), 
                  pval.method = T,
                  pval.method.coord = c(0, 0.05),
-                 surv.median.line = "hv", #添加中位生存曲线
+                 surv.median.line = "hv", 
                  #risk.table = 'nrisk_cumcensor',#tables.height = 0.2,
                  #surv.scale = 'percent',
                  break.y.by=0.2,
                  risk.table.y.text = FALSE,
                  #palette=c("#e63946", "#457b9d","#81b29a"), 
-                 #legend.labs=c("Normal (3.11-5.18mmol/L)","Low (≤3.11mmol/L)","High (≥5.18mmol/L)"), #标签
+                 #legend.labs=c("Normal (3.11-5.18mmol/L)","Low (≤3.11mmol/L)","High (≥5.18mmol/L)"), 
                  legend.title="PR",
                  #legend = c(0.28, 0.45),
                  font.legend = 12,
                  #title="Survival Group By Cholesterol",
-                 ylab="Probability of survival",xlab = "Months since diagnosis", #更改横纵坐标
+                 ylab="Probability of survival",xlab = "Months since diagnosis", 
                  break.x.by = 10)
 
 f5 <- survfit(Surv(months,status5==2)~complete_data$race1, data=complete_data)
 s5 <- ggsurvplot(f5,data=complete_data, pval = F,#conf.int = TRUE,
                  conf.int.alpha=0.3,#conf.int.style="step",
-                 #pval.coord = c(5, 0.05), #调节Pval的位置
+                 #pval.coord = c(5, 0.05), 
                  #pval.method = T,
                  #pval.method.coord = c(0, 0.05),
-                 surv.median.line = "hv", #添加中位生存曲线
+                 surv.median.line = "hv", 
                  #risk.table = 'nrisk_cumcensor',#tables.height = 0.2,
                  #surv.scale = 'percent',
                  break.y.by=0.2,
                  risk.table.y.text = FALSE,
                  #palette=c("#e63946", "#457b9d","#81b29a"), 
-                 #legend.labs=c("Normal (3.11-5.18mmol/L)","Low (≤3.11mmol/L)","High (≥5.18mmol/L)"), #标签
+                 #legend.labs=c("Normal (3.11-5.18mmol/L)","Low (≤3.11mmol/L)","High (≥5.18mmol/L)"), 
                  legend.title="Race",
                  #legend = c(0.28, 0.45),
                  font.legend = 12,
                  #title="Survival Group By Cholesterol",
-                 ylab="Probability of survival",xlab = "Months since diagnosis", #更改横纵坐标
+                 ylab="Probability of survival",xlab = "Months since diagnosis", 
                  break.x.by = 10)
 s5
 
