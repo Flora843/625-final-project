@@ -14,8 +14,22 @@ fontsize: 12pt
 
 ```{r setup, include=FALSE}
 # header-includes: \usepackage{setspace}\doublespacing
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
 ```
+```{r}
+library(ggplot2)
+library(survival)
+library(survminer)
+library(gtsummary)
+library(dplyr)
+library(plyr)
+library(tableone)  
+library(kableExtra)
+library(randomForestSRC)
+library(pec)
+library(mice)
+```
+
 
 # Introduction
 
