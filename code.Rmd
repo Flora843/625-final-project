@@ -40,7 +40,6 @@ library(sjlabelled)
 library(AUC)
 library(tableone)  
 library(kableExtra)
-library(forestplot)
 library(stringr)
 library(rms)
 library(ipred)
@@ -258,7 +257,8 @@ table1_data %>%
         pvalue_fun = function(x) style_pvalue(x, digits = 2)) %>%
   bold_p(t = 0.05) %>%
   bold_labels
-
+```
+```{r}
 imp <- mice(train, m=5,printFlag = T,seed=10000)
 trainc <- complete(imp)
 write.csv(x = trainc,file = "train.csv")
@@ -280,6 +280,7 @@ y<- Surv(trainc[,time],trainc[,status])
 #trainc$reginal_f[trainc$reginal>4] <- 1
 #trainc$reginal_f[trainc$reginal<=4] <- 0
 #trainc$reginal_f <- factor(trainc$reginal_f)
+
 ```{r}
 fit_cox1 <- coxph(Surv(months,status5==2)~sex+age+ER_PR+race_6+real_tumor+surgery+HER+stage+reginal+reginal:real_tumor,data=trainc)
 #fit_cox1 <- coxph(Surv(months,status5==2)~sex+age+ER_PR+race_6+factor(real_tumor)+surgery+HER+stage+reginal_f:factor(real_tumor),data=trainc)
@@ -289,7 +290,9 @@ result <- read.csv("forest.csv",header=TRUE,sep=',')#读入数据集
 #knitr::kable(head(data),booktabs = TRUE,align='c')
 head(result)
 ```
+
 ```{r}
+library(forestplot)
 fig1<- forestplot(result[,c(1,2,3)], #告诉函数，合成的表格result的第1，5，6列还是显示数字
                   mean=result[,4],   #告诉函数，表格第2列为HR，它要变成森林图的小方块
                   lower=result[,5],  #告诉函数表格第3列为5%CI，
