@@ -74,8 +74,12 @@ Here are the limitations of the study. The tumor size was observed to be insigni
 # Reference
 
 [1]Breast cancer statistics: How common is breast cancer? American Cancer Society. (n.d.). Retrieved December 17, 2022, from https://www.cancer.org/cancer/breast-cancer/about/how-common-is-breast-cancer.html 
+
 [2]Liu Y, He M, Zuo WJ, Hao S, Wang ZH, Shao ZM. Tumor Size Still Impacts Prognosis in Breast Cancer With Extensive Nodal Involvement. Front Oncol. 2021 Apr 9;11:585613. doi: 10.3389/fonc.2021.585613. PMID: 33898305; PMCID: PMC8064390. 
+
 [3]Balabram D, Turra CM, Gobbi H. Survival of patients with operable breast cancer (Stages I-III) at a Brazilian public hospital--a closer look into cause-specific mortality. BMC Cancer. 2013 Sep 24;13:434. doi: 10.1186/1471-2407-13-434. PMID: 24063763; PMCID: PMC3849091.
+
 [4]Elobaid, Y., Aamir, M., Grivna, M., Suliman, A., Attoub, S., Mousa, H., Ahmed, L. A., & Oulhaj, A. (n.d.). Breast cancer survival and its prognostic factors in the United Arab Emirates: A retrospective study. PLOS ONE. Retrieved December 17, 2022, from https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0251118 
+
 [5]Understanding breast cancer survival rates. Susan G. Komen®. (2022, July 20). Retrieved December 17, 2022, from https://www.komen.org/breast-cancer/facts-statistics/breast-cancer-statistics/survival-rates/ 
 
