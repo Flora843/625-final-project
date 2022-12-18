@@ -49,7 +49,7 @@ Cox regression analysis was used to estimate hazard ratios (HRs), 95% confidence
 
 The random survival forest takes the binary survival tree as the basic unit and is an extension of the traditional binary decision tree.  When the input data passes through the nodes of the binary decision tree, it will be divided into two groups of data by the judgment conditions of the nodes until the input data are classified into the same category. Unlike the usual decision tree, the survival decision tree uses a log-rank test to determine the splits. The study first constructed a random survival forest with 100 decision trees. Based on the decreasing rate of error, 60 trees were determined to build our model. The information on the RSF model is given in the table.
 
-The efficiency of the prediction model was measured by the concordance index(C-index) and out-of-bag error rate (OOB error rate). The discrimination between the prediction value and the real value was calculated by C-index using the “pec” package. OOB error is a method of measuring the prediction error utilizing bootstrap aggregating (bagging). Bagging uses sub-sampling with replacement to create training samples for the model to learn from. OOB error is the mean prediction error on each training sample xi, using only the trees that did not have xi in their bootstrap sample. The OOB error rate of RSF is given straight from the model function and the study imitated the bootstrap 60 times to get the average OOB error rate for Cox regression. The model with a high C-index value and a low OOB error rate was considered to be efficient.
+The efficiency of the prediction model was measured by the concordance index(C-index) and out-of-bag error rate (OOB error rate). The discrimination between the prediction value and the real value was calculated by C-index using the “pec” package. OOB error is a method of measuring the prediction error utilizing bootstrap aggregating (bagging). Bagging uses sub-sampling with replacement to create training samples for the model to learn from. OOB error is the mean prediction error on each training sample xi, using only the trees that did not have xi in their bootstrap sample. The OOB error rate of RSF is given straight from the model function and the study imitated the bootstrap 50 times to get the average OOB error rate for Cox regression. The model with a high C-index value and a low OOB error rate was considered to be efficient.
 
 # Result
 
@@ -120,7 +120,7 @@ plot(nom2)
 
 The significance of variables is determined by the effect estimates and is influenced by co-variables. In this figure, age contributes the most to the outcome thus it is assigned 100 points. In proportion to the most effective variable, the rest are assigned a point according to their effect size. Relative importance could be understood by comparing the most significant variable (Age) to the least significant variable (HER).
 
-```{r,fig.height=4,fig.width=4}
+```{r,fig.height=3,fig.width=3}
 library(survminer)
 f2 <- survfit(Surv(months,status5==2)~trainc$ER_PR, data=trainc)
 s2 <- ggsurvplot(f2,data=trainc, pval = T,#conf.int = TRUE,
@@ -161,11 +161,6 @@ s3
 Kaplan-Meier plots showed the survival curves using the log-rank test for the comparison of HER and ER_PR variables correspondingly. The p-value in each graph indicates a significant difference in survival curves among groups. For the ER_PR variable, three survival curves have clear separation without intersection. For the HER variable, a separation is not clear enough, we can still make the inference that a positive HER indicates a smaller risk of death.
 
 ### Model Result
-
-```{r,echo=TRUE}
-o <-  rfsrc(Surv(months,status5==2)~sex+age+ER_PR+race_6+real_tumor+surgery+HER+stage+reginal, trainc, nsplit = 10, ntree = 50,block.size = 1)
-print(o)
-```
 
 The OOB(Out-of-bag) scores for the Cox proportional hazard model and random forest model are 0.256 and 0.255, which indicates that they predicted the OOB samples with 74.4% accuracy and 74.5% accuracy, respectively. The C-index calculated from the Cox proportional hazard model is 0.745 in training data and 0.539 in test data. The C-index calculated from the random forest model is 0.801 in training data and 0.671 in test data.
 
