@@ -9,6 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# some packages might cover the function of others.
 ```{r}
 library(ggplot2)
 library(survival)
@@ -22,28 +23,26 @@ library(randomForestSRC)
 library(pec)
 library(mice)
 library(corrplot)
-library(circlize)
 library(ggplot2)
 library(tidyverse)
+```
+# run next 
+```{r}
+library(circlize)
 library(RColorBrewer)
-library(survival)
-library(survminer)
 library(mgcv)
 library(lattice)
 library(MASS)
 library(nnet)
-library(mice)
 library(sjPlot)
 library(sjmisc)
 library(sjlabelled)
 library(AUC)
 library(tableone)  
-library(survival)
 library(kableExtra)
 library(forestplot)
 library(stringr)
 library(rms)
-library(pec)
 library(ipred)
 ```
 ```{r}

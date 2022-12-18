@@ -33,6 +33,9 @@ Survival analysis is known to explore the occurrence of an event of interest, su
 
 Cox regression analysis was used to estimate hazard ratios (HRs), 95% confidence intervals and p-values. The study used a Forest plot to specify the efficiency of predicting variables. To observe the patient's 5-year survival rate, we used the "rms" package to build a model for the filtered variables and draw a nomogram to visualize the prediction results of the independent variables and survival outcomes. 
 
+The random survival forest takes the binary survival tree as the basic unit and is an extension of the traditional binary decision tree.  When the input data passes through the nodes of the binary decision tree, it will be divided into two groups of data by the judgment conditions of the nodes until the input data are classified into the same category. Unlike the usual decision tree, the survival decision tree uses a log-rank test to determine the splits. The study first constructed a random survival forest with 100 decision trees. Based on the decreasing rate of error, 60 trees were determined to build our model. The information on the RSF model is given in the table.
+
+
 # Result
 
 ### Cox Proportional Hazard Model
@@ -66,7 +69,7 @@ The OOB(Out-of-bag) scores for the Cox proportional hazard model and random fore
 
 The C-index in both Cox proportional hazard model and the random forest model is bigger than 0.5, which reflects that they are prediction models with good fits. And the C-index score of the random survival forest is higher than the score of the Cox proportional hazard model, which also indicates that the random survival forest has a higher model fit and prediction accuracy. Machine learning methods have higher accuracy, fewer required assumptions,  and a higher capacity to deal with big data. And that’s why it was applied in this study. On the other hand, compared to train data, the C-index in test data is lower. With the development of treatment, early detection of breast cancer and improved diagnosis accuracy, there might be bias by using train data from 2004 to 2014 to predict test data from 2005.
 
-Here are the limitations of the study. The tumor size was observed to be insignificant, which is inconsistent with previous studies. The effect of tumor size on survival prediction is associated with the number of positive lymph nodes(LNs). It has been indicated that small tumors with more than four positive LNs might be more aggressive diseases compared to bigger tumors[2]. In addition, stage I showed an insignificant result. In previous studies, stage 0 and stage I were combined together and treated as one reference group because both the survival rate is almost 100%[4]. That might explain why it’s insignificant in this study. 
+Here are the limitations of the study. The tumor size was observed to be insignificant, which is inconsistent with previous studies. The effect of tumor size on survival prediction is associated with the number of positive lymph nodes(LNs). It has been indicated that small tumors with more than four positive LNs might be more aggressive diseases compared to bigger tumors[2]. In addition, stage I showed an insignificant result. In previous studies, stage 0 and stage I were combined together and treated as one reference group because both survival rate is almost 100%[4]. That might explain why it’s insignificant in this study. 
 
 # Reference
 

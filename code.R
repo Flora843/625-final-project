@@ -10,9 +10,10 @@ library(randomForestSRC)
 library(pec)
 library(mice)
 library(corrplot)
-library(circlize)
 library(ggplot2)
 library(tidyverse)
+#run next
+library(circlize)
 library(RColorBrewer)
 library(survival)
 library(survminer)
@@ -261,7 +262,7 @@ result <- read.csv("forest.csv",header=TRUE,sep=',')#读入数据集
 #knitr::kable(head(data),booktabs = TRUE,align='c')
 head(result)
 
-
+library(tidyverse)
 fig1<- forestplot(result[,c(1,2,3)], #告诉函数，合成的表格result的第1，5，6列还是显示数字
                   mean=result[,4],   #告诉函数，表格第2列为HR，它要变成森林图的小方块
                   lower=result[,5],  #告诉函数表格第3列为5%CI，
