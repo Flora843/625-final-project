@@ -41,7 +41,6 @@ library(AUC)
 library(tableone)  
 library(kableExtra)
 library(stringr)
-library(rms)
 library(ipred)
 ```
 ```{r}
@@ -359,7 +358,7 @@ mean(coxph_err,na.rm=T)
 ```
 #nomogram
 ```{r}
-
+library(rms)
 train_cox <- trainc %>% dplyr::select("age","sex","months","HER","race_6","stage","ER_PR","surgery","real_tumor","reginal","status5")
 colnames(train_cox) <- c("Age","Sex","months","HER","Race","Stage","ER_PR","Surgery","Tumor_Size","Reginal","status5")
 ddist <- datadist(train_cox) 
