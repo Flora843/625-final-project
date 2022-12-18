@@ -9,7 +9,7 @@ output:
     theme: united
 author: Ye Yao, Zhilin Zhang, Hengde Ouyang
 date: "12/17/2022"
-fontsize: 12pt
+fontsize: 11pt
 ---
 
 ```{r setup, include=FALSE}
@@ -33,7 +33,7 @@ library(mice)
 
 # Introduction
 
-Breast cancer is the most common cancer among women in the United States. According to the survey, the average risk of a woman in the United States developing breast cancer is about 13%[1]. The survival prediction, especially 5-year survival analysis, was largely used to help doctors understand the prognosis, predict treatment efficiency and develop individualized treatment plans. In previous studies, machine learning was largely applied for its high accuracy and fewer assumption requirements. In this study, the survival prediction model was built based on data with 300998 cases and 9 variables extracted from the SEER research database. 
+Breast cancer is the most common cancer among women in the United States. According to the survey, the average risk of a woman in the United States developing breast cancer is about 13%[1].The survival prediction, especially 5-year survival analysis, was largely used to help doctors understand the prognosis, predict treatment efficiency and develop individualized treatment plans. In previous studies, machine learning was largely applied for its high accuracy and fewer assumption requirements. In this study, the survival prediction model was built based on data with 300998 cases and 9 variables extracted from the SEER research database. 
 
 #  Data Description
 Nine variables with potential effects on survival were selected, including Age, Race, ER_PR, HER, Tumor Size,  surgery, sex, Reginal and Stage. The Race was categorized into Asian, Black, White, America Indian, Native Hawaii and other Pacific islanders and others. ER_PR, the score of estrogen receptor/progesterone receptor tests. was reflected as 0, 1, 2, indicating ER-/PR-, ER+/PR- or ER-/PR+, ER+/PR+. And receiving surgery of removing the tissue in the primary site was also represented as Surgery.And variable Reginal reflects the existence of positive lymph nodes. In addition, there was an interaction term between Tumor Size and Reginal. The outcome variable is survival time in months. 
